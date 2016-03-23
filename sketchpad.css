@@ -1,0 +1,71 @@
+#grid-container {
+	border: solid 2px #000;
+	margin: 0 auto;
+}
+
+.padPropsForm {
+	border: solid 1px #AAA;
+	display: inline-block;
+	margin-right: 50px;
+	padding: 3px 5px 3px 5px;
+}
+
+#padFormSpacer {
+	display: inline-block;
+	width: 100px;
+}
+
+.padPropsInput {
+	width: 30px;
+	margin-right: 10px;
+}
+
+#padOptions {
+	display: inline-block;
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 10pt;
+	letter-spacing: 1px;
+	margin: 0;
+}
+
+header {
+	background-color: #eee;
+	border-style: solid;
+	border-color: #000;
+	border-width: 1px 0;
+	padding: 10px 0;
+	margin: 10px 0;
+	text-align: center;
+
+}
+
+h1 {
+	font-weight: 100;
+	letter-spacing: 7px;
+}
+
+nav a {
+	padding: 0 5px;
+}
+
+nav {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+button {
+	background-color: #eee;
+	border: solid 1px #fff;
+	font-family: sans-serif;
+	font-size: 10pt;
+
+	-webkit-transition-duration: 0.2s;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+	border-color: #888;
+}
