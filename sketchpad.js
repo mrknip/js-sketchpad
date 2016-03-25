@@ -1,4 +1,3 @@
-// Wrap this all in a 'padUtils' function
 var options = {
     drawType: "smooth",
     drawColour: "#000",
@@ -43,17 +42,7 @@ function switchBoxColour(e) {
 
     };
     e.stopPropagation();
-        
-    //     if (options.drawType === "smooth") {
-    //         targetBox.style.backgroundColor = options.drawColour;
-    //         targetBox.style.opacity = (parseFloat(targetBox.style.opacity) + 0.2  );
-    //     } else if (options.drawType === "standard") {
-    //         targetBox.style.backgroundColor = options.drawColour;
-    //         targetBox.style.opacity = 1;
-    //     };
-    // };
 };
-
 
 // Single box maker
 function addBox(parent, numberOfBoxes) {
@@ -65,15 +54,6 @@ function addBox(parent, numberOfBoxes) {
     gridBox.style.height = (options.padWidth / numberOfBoxes);
     gridBox.style.opacity = 0;
     
-    // gridBox.onmouseover = function () {
-    //     if (options.drawType === "smooth") {
-    //         this.style.backgroundColor = options.drawColour;
-    //         this.style.opacity = (parseFloat(this.style.opacity) + 0.2  );
-    //     } else if (options.drawType === "standard") {
-    //         this.style.backgroundColor = options.drawColour;
-    //         this.style.opacity = 1;
-    //     };
-    // };
     document.getElementById(parent).appendChild(gridBox);
 };
 
