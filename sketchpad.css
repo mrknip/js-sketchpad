@@ -6,7 +6,8 @@
 .padPropsForm {
     border: solid 1px #AAA;
     display: inline-block;
-    margin-right: 50px;
+    margin: auto 50px auto 0;
+
     padding: 3px 5px 3px 5px;
 }
 
@@ -22,6 +23,8 @@
 
 #padOptions {
     display: inline-block;
+    position: relative;
+    margin: auto 0;
 }
 
 body {
@@ -51,6 +54,12 @@ nav a {
     padding: 0 5px;
 }
 
+.a {
+    display: inline-block;
+    padding: 0 5px;
+
+}
+
 nav {
     text-align: center;
     margin-bottom: 20px;
@@ -68,4 +77,97 @@ button {
 
 button:hover {
     border-color: #888;
+}
+
+
+/*POPOUT MENU STYLES*/
+.cont {
+  position: absolute;
+  background-color: transparent;
+  padding: 0;
+  height: 0px;
+  width: 0px;
+  transition: 0.3s ease;
+}
+
+.popoutShow {
+  padding: 10px;
+  height: 100px;
+  width: 100px;
+  z-index: 3;
+}
+
+.col {
+  float: left;
+  height: 100%;
+  width: 33.333333%;
+  background-color: transparent;
+  align: center;
+}
+
+.box {
+  position: relative;
+  width: 80%;
+  height: 80%;
+
+  margin: auto;
+  /*top: 50%;*/
+  /*transform: translateY(-50%);*/
+}
+
+.boxShowOutline {
+  outline: 1px solid #000;
+}
+
+.box:hover {
+    outline: 2px solid #000;
+}
+
+
+.stretch {
+  width: 100%;
+  display: inline-block;
+}
+
+.row {
+  width: 100%;
+  height: 33.33333%;
+  text-align: center;
+}
+
+
+#hue1 {
+    background-color: #c60;
+}
+
+#hue2 {
+    background-color: #009;
+}
+
+#hue3 {
+    background-color: #09c;
+}
+
+#hue4 {
+    background-color: #f00;
+}
+
+#hue5 {
+    background-color: #ff0;
+}
+
+#hue6 {
+    background-color: #FFF;
+}
+
+#hue7 {
+    background-color: #390;
+}
+
+#hue8 {
+    background-color: #cf0;
+}
+
+#hue9 {
+    background-color: #000;
 }

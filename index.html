@@ -12,15 +12,65 @@
 
 <nav>
     <div class="padPropsForm">
-        <span>Pad size(px): <input value="460"  class="padPropsInput" id="padWidthInput"> 
-        Boxes per line: <input value="50" class="padPropsInput" id="numberOfBoxesInput"> <button onclick="reset()">Reset</button></span>
+        Pad size(px): <input value="460"  class="padPropsInput" id="padWidthInput"> 
+        Boxes per line: <input value="50" class="padPropsInput" id="numberOfBoxesInput"> 
+        <button onclick="reset()">Reset</button>
     </div>
 
     <div id="padOptions">
-        <a>Colours</a>
-        <a>Effects</a>
-        <a>Options</a>
-    <div>
+        <div class="a">
+            <button onclick='options.drawType = "smooth"'>Smooth</button>
+        </div>
+
+        <div class="a">
+            <button onclick='options.drawType = "standard"'>Standard</button>
+        </div>
+
+        <div class="a">
+            <button id="popoutBtn">Colours</button>
+            <div id="popout" class="cont">
+
+              <div class="row">
+                <div class="col">
+                  <div id="hue1" class="box"></div>
+                </div>
+                <div class="col">
+                  <div id="hue2" class="box"></div>
+                </div>
+                <div class="col">
+                  <div id="hue3" class="box"></div>
+                </div>
+                <span class="stretch"></span>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div id="hue4" class="box"></div>
+                </div>
+                <div class="col">
+                  <div id="hue5" class="box"></div>
+                </div>
+                <div class="col">
+                  <div id="hue6" class="box"></div>
+                </div>
+                <span class="stretch"></span>
+              </div>
+              
+              <div class="row">
+                <div class="col">
+                  <div id="hue7" class="box"></div>
+                </div>
+                <div class="col">
+                  <div id="hue8" class="box"></div>
+                </div>
+                <div class="col">
+                  <div id="hue9" class="box"></div>
+                </div>
+                <span class="stretch"></span></div>
+        </div>
+        
+        <!-- Popout colour menu -->  
+</div>
 </nav>
 
 <div id="grid-container"></div>

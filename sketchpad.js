@@ -1,70 +1,131 @@
 // Wrap this all in a 'padUtils' function
+var options = {
+    drawType: "smooth",
+    drawColour: "#000",
+    padWidth: 460
+};
 
-var padWidth = 460
+function popoutToggle() {
+    document.getElementById("popout").classList.toggle("popoutShow");
+    
+    // Adds outline to the colour boxes after making box visible
+    var boxes = document.getElementsByClassName("box")
+    for (var i = boxes.length - 1; i >= 0; i--) {
+        boxes[i].classList.toggle("boxShowOutline");
+    };
+};
+
+function selectColour(e) {
+    console.log(e);
+    if (e.target !== e.currentTarget) {
+        var boxSelected = document.getElementById(e.target.id);
+        var colourSelected = getComputedStyle(boxSelected).backgroundColor;
+        options.drawColour = colourSelected;
+    };
+    e.stopPropagation();
+}
+
+function switchBoxColour(e) {
+    console.log(e);
+    if (e.target !== e.currentTarget) {
+        var targetBox = e.target;
+        
+        switch(options.drawType){
+            case "smooth":
+                targetBox.style.backgroundColor = options.drawColour;
+                targetBox.style.opacity = (parseFloat(targetBox.style.opacity) + 0.2  );
+                break;
+            case "standard":
+                targetBox.style.backgroundColor = options.drawColour;
+                targetBox.style.opacity = 1;
+                break;
+        };
+
+    };
+    e.stopPropagation();
+        
+    //     if (options.drawType === "smooth") {
+    //         targetBox.style.backgroundColor = options.drawColour;
+    //         targetBox.style.opacity = (parseFloat(targetBox.style.opacity) + 0.2  );
+    //     } else if (options.drawType === "standard") {
+    //         targetBox.style.backgroundColor = options.drawColour;
+    //         targetBox.style.opacity = 1;
+    //     };
+    // };
+};
+
 
 // Single box maker
-var addBox = function(parent, n) {
+function addBox(parent, numberOfBoxes) {
     var gridBox = document.createElement('div');
-    gridBox.style.cssText = 'background-color:#FFF; position:relative; display:inline-block; align:center'
-    gridBox.style.width = (padWidth / n);
-    gridBox.style.height = (padWidth / n);
-    gridBox.onmouseover = function () {
-        gridBox.style.backgroundColor = "black";
-    };
-    //gridBox.onmouseout = function () {
-    //  gridBox.style.backgroundColor = "red";
-    //};
-
+    
+    gridBox.style.backgroundColor = '#fff';
+    gridBox.style.display = 'inline-block';
+    gridBox.style.width = (options.padWidth / numberOfBoxes);
+    gridBox.style.height = (options.padWidth / numberOfBoxes);
+    gridBox.style.opacity = 0;
+    
+    // gridBox.onmouseover = function () {
+    //     if (options.drawType === "smooth") {
+    //         this.style.backgroundColor = options.drawColour;
+    //         this.style.opacity = (parseFloat(this.style.opacity) + 0.2  );
+    //     } else if (options.drawType === "standard") {
+    //         this.style.backgroundColor = options.drawColour;
+    //         this.style.opacity = 1;
+    //     };
+    // };
     document.getElementById(parent).appendChild(gridBox);
 };
 
 // Multibox maker, defaults to 1 box
-var addBoxes = function(parent, n) {
-    for (var i = 1; i <= n; i ++) {
-        addBox(parent, n);
+function addBoxes(parent, numberOfBoxes) {
+    for (var i = 1; i <= numberOfBoxes; i ++) {
+        addBox(parent, numberOfBoxes);
     };
 };
 
 // Single row maker
-var addRow = function(numberOfBoxes) {
+function addRow(numberOfBoxes) {
     var gridRow = document.createElement('div')
     gridRow.style.margin = "0 auto";
     gridRow.id = "box-here";
 
     document.getElementById("grid-container").appendChild(gridRow);
-    addBoxes("box-here", numberOfBoxes );
-
-    gridRow.id = "";
-    gridRow.class = gridRow
+    addBoxes("box-here", numberOfBoxes);
 };
 
 // Multi row maker
-
-var addRows = function(numberOfBoxes, n) {
-    for (var i = 1; i <= n; i++) {
+function addRows(numberOfBoxes) {
+    for (var i = 1; i <= numberOfBoxes; i++) {
         addRow(numberOfBoxes);
-        console.log(i + " rows")
     };
 };
 
-// Grid maker!
-
-var addGrid = function(numberOfBoxes) {
-    addRows(numberOfBoxes, numberOfBoxes);
+// Grid maker
+function addGrid(numberOfBoxes) {
+    addRows(numberOfBoxes);
 };
 
-// Reset function
-
-var reset = function() {
+function reset() {
     document.getElementById("grid-container").innerHTML = "";
-    padWidth = document.getElementById("padWidthInput").value;
-    document.getElementById("grid-container").style.width = padWidth
+    options.padWidth = document.getElementById("padWidthInput").value;
+    document.getElementById("grid-container").style.width = options.padWidth
     addGrid(document.getElementById("numberOfBoxesInput").value);
-}
+};
 
 window.onload = function() {
-    // document.body.appendChild(gridDiv)
-    // addDivs();
-    document.getElementById("grid-container").style.width = padWidth
+    document.getElementById("grid-container").style.width = options.padWidth
     addGrid(50);
+
+    // Event Listeners
+    var popoutBtn = document.getElementById("popoutBtn");
+    popoutBtn.onclick = function () {
+        popoutToggle();
+    };
+
+    var popoutGrid = document.getElementById("popout");
+    popoutGrid.addEventListener("click", selectColour, false);
+
+    var grid = document.getElementById("grid-container");
+    grid.addEventListener("mouseover", switchBoxColour, false);
 };
